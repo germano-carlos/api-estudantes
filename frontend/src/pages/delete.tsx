@@ -4,6 +4,7 @@ import { http } from "../services/axios";
 import styles from "../styles/Get.module.css";
 import { Student } from "../types/Student";
 import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Delete() {
     const [students, setStudents] = useState<Student[]>([]);
@@ -52,9 +53,7 @@ export default function Delete() {
                                 <span>Cidade: </span>
                                 {city}
                             </p>
-                            <div>
-                                <Button onClick={() => deleteUser(id)} variant="outline-warning">DELETAR !</Button>{' '}
-                            </div>
+                            <Button onClick={() => deleteUser(id)} variant="outline-danger">DELETAR !</Button>{' '}
                         </div>
                     ))}
                 </div>
