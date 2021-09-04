@@ -1,13 +1,11 @@
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { http } from "../services/axios";
 import styles from "../styles/Get.module.css";
 import { Student } from "../types/Student";
 import Button from 'react-bootstrap/Button';
-import { Modal } from "react-bootstrap";
 
-
-export default function Put() {
+export default function Delete() {
     const [students, setStudents] = useState<Student[]>([]);
 
     useEffect(() => {
@@ -17,6 +15,16 @@ export default function Put() {
             .then(setStudents)
             .catch(console.error);
     }, []);
+
+    const deleteUser = (id : any) => {
+        http.delete(`/students/${id}`)
+        .then((res) => {
+            if(res) alert("Usuário Deletado com Sucesso");
+            else alert("Usuário não não encontrado ou erro ao deletar o registro !");
+        })
+        .then(() => window.location.reload())
+        .catch((err) => alert(err))
+    }
 
     return (
         <div className={styles.container}>
@@ -28,7 +36,7 @@ export default function Put() {
 
             <header className={styles.header}>
                 <h1>
-                    <span className="orange">PUT</span> Students
+                    <span className="red">DELETE</span> Students
                 </h1>
             </header>
 
@@ -44,7 +52,9 @@ export default function Put() {
                                 <span>Cidade: </span>
                                 {city}
                             </p>
-                            <Button variant="outline-warning">Editar</Button>{' '}
+                            <div>
+                                <Button onClick={() => deleteUser(id)} variant="outline-warning">DELETAR !</Button>{' '}
+                            </div>
                         </div>
                     ))}
                 </div>
