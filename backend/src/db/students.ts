@@ -1,9 +1,30 @@
 import { Student } from "../types/Student";
 
-const students: Student[] = [
+let students: Student[] = [
   {
     id: 1,
     name: "John Doe",
+    email: "john.doe@example.com",
+    city: "Belo Horizonte",
+    birth: new Date("11/13/1999"),
+  },
+  {
+    id: 2,
+    name: "John Doe 2",
+    email: "john.doe@example.com",
+    city: "Belo Horizonte",
+    birth: new Date("11/13/1999"),
+  },
+  {
+    id: 3,
+    name: "John Doe 3",
+    email: "john.doe@example.com",
+    city: "Belo Horizonte",
+    birth: new Date("11/13/1999"),
+  },
+  {
+    id: 4,
+    name: "John Doe 4",
     email: "john.doe@example.com",
     city: "Belo Horizonte",
     birth: new Date("11/13/1999"),
@@ -30,4 +51,11 @@ function addStudent(student: Student) {
  */
 const getStudents = () => Promise.resolve(Object.freeze([...students]));
 
-export { addStudent, getStudents };
+function deleteStudent(id: number) {
+  let index = students.findIndex((element) => element.id == id );
+  console.log(index);
+  students.splice(index, 1);
+  return Promise.resolve(index != -1);;
+}
+
+export { addStudent, getStudents, deleteStudent };
