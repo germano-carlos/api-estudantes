@@ -53,9 +53,16 @@ const getStudents = () => Promise.resolve(Object.freeze([...students]));
 
 function deleteStudent(id: number) {
   let index = students.findIndex((element) => element.id == id );
-  console.log(index);
   students.splice(index, 1);
   return Promise.resolve(index != -1);;
 }
 
-export { addStudent, getStudents, deleteStudent };
+function putStudent(id: number, student: Student) {
+  let index = students.findIndex((element) => element.id == id );
+  if(index == -1) return Promise.resolve(false);
+
+  students[index] = student;
+  return Promise.resolve(true);
+}
+
+export { addStudent, getStudents, deleteStudent, putStudent };

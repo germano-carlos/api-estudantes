@@ -19,7 +19,7 @@ export class StudentsController {
   }
 
   async put(req: Request, res: Response) {
-    const newStudent = await StudentsDB.deleteStudent(1);
+    const newStudent = await StudentsDB.putStudent(parseInt(req.params.id), req.body);
     return res.status(StatusCodes.OK).json(newStudent);
   }
 }
