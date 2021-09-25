@@ -3,8 +3,9 @@ import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 
 export class StudentsController {
-  async get(_: Request, res: Response) {
-    const students = await StudentsDB.getStudents();
+  async get(req : Request, res: Response) {
+    const id = (req.params?.id != 'null' && !(typeof(req.params?.id) == 'undefined')) ? parseInt(req.params?.id) : null;
+    const students = await StudentsDB.getStudents(id);
     return res.status(StatusCodes.OK).json(students);
   }
 

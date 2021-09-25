@@ -9,6 +9,7 @@ const studentsController = new StudentsController();
 
 routes.get("/ping", (_, res) => res.json("pong"));
 
+routes.get("/students/:id", studentsController.get);
 routes.get("/students", studentsController.get);
 routes.post(
   "/students",

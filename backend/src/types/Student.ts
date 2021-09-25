@@ -11,7 +11,7 @@ export interface Student {
 export const StudentSchema = {
   id: Joi.number(),
   name: Joi.string().required(),
-  birth: Joi.date().required(),
+  birth: Joi.date(),
   email: Joi.string().required().email(),
-  city: Joi.string().required(),
+  city: Joi.string(),
 };
