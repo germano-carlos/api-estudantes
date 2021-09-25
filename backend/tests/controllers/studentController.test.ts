@@ -55,7 +55,7 @@ describe("Test student requests", () => {
       .then((res) => expect(res.body).toMatchObject({ id: 5, ...newStudent }));
   });
 
-  it.only("should update an student", async () => {
+  it("should update an student", async () => {
     const id = 1;
     const newStudent = {
       name: "John Doe 2",
@@ -79,4 +79,19 @@ describe("Test student requests", () => {
 
   });
 
+  it("should delete an student", async () => {
+    const id = 1;
+    await supertest(app)
+      .delete(`/students/${id}`)
+      .then((res) => expect(res.body).toBe(true));
+
+    await supertest(app)
+      .get(`/students`)
+      .then((res) => 
+      {
+        let index = res.body.findIndex((element:any) => element.id == id );
+        expect(index).toBe(-1);
+      }); 
+
+  });
 });
