@@ -11,12 +11,12 @@ jobs:
     name: "Build Project"
     runs-on: ubuntu-latest
     env:
-      NAME: ${{secrets.NAME}}
+      NAME: ${{secrets.name}}
       WORLD: "Earth"
     steps:
       - uses: actions/checkout@v2
       - name: Print Hello {{Person(Variable)}}
-        run: echo ${{NAME}}
+        run: echo $NAME
 
   # test:
   #   name: "Tests"
