@@ -24,10 +24,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Move to backend folder
         run: cd backend
-      - name: Run Build
-        run: npm run build
-      - name: Show dist Page
-        run: ls dist/
+      - name: Show backend Files
+        run: ls
 
   # test:
   #   name: "Tests"
