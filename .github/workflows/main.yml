@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Installing Dependences
+        run: npm install ./backend
       - name: Build Project
         run: npm run build ./backend
 
