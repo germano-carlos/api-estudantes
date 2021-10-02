@@ -11,7 +11,7 @@ jobs:
     name: "Build Project"
     runs-on: ubuntu-latest
     env:
-      NAME: ${{secrets.name}}
+      NAME: ${{secrets.NAME}}
       WORLD: "Earth"
     steps:
       - uses: actions/checkout@v2
