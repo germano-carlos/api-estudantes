@@ -26,7 +26,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Move to backend folder
-        run: cd backend
-      - name: Run Tests
-        run: npm run teste
+        run: ls
       
