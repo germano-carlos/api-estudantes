@@ -25,6 +25,7 @@ jobs:
     name: "Tests"
     runs-on: ubuntu-latest
     steps:
-      - name: Move to backend folder
+      - uses: actions/checkout@v2
+      - name: Show the directory
         run: ls
       
