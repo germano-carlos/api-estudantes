@@ -22,10 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Move to backend folder
-        run: cd ./backend
-      - name: Show backend Files
-        run: ls
+      - name: Build Project
+        run: npm run build ./backend
 
   # test:
   #   name: "Tests"
