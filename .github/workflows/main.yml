@@ -11,7 +11,8 @@ jobs:
     name: "Hello World"
     runs-on: ubuntu-latest
     steps:
-      - name: Say Hello
-        run: echo "Hello World"
-      - name: Say Goodbye
-        run: echo "Goodbye"
+      - uses: actions/checkout@v2
+      - name: Show the directory
+        run: ls
+      - name: Show the index.ts
+        run: cat backend/index.ts
