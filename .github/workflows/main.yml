@@ -8,7 +8,7 @@ on:
 jobs:
 
   environment-variables-print:
-    name: "Build Project"
+    name: "Print Person Name"
     runs-on: ubuntu-latest
     env:
       NAME: ${{secrets.name}}
@@ -16,6 +16,18 @@ jobs:
     steps:
       - name: Print Hello {{Person(Variable)}}
         run: echo Hello $NAME !, Welcome to $WORLD 
+
+  build:
+    name: "Build Project"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Move to backend folder
+        run: cd backend
+      - name: Run Build
+        run: npm run build
+      - name: Show dist Page
+        run: ls dist/
 
   # test:
   #   name: "Tests"
