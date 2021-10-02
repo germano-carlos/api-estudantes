@@ -14,9 +14,8 @@ jobs:
       NAME: ${{secrets.name}}
       WORLD: "Earth"
     steps:
-      - uses: actions/checkout@v2
       - name: Print Hello {{Person(Variable)}}
-        run: echo $NAME
+        run: echo Hello $NAME !, Welcome to $WORLD 
 
   # test:
   #   name: "Tests"
