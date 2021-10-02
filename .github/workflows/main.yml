@@ -16,3 +16,11 @@ jobs:
         run: ls
       - name: Show the index.ts
         run: cat backend/index.ts
+
+  test:
+    name: "Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Tests
+        run: npm run teste
+      
