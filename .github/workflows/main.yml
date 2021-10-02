@@ -29,6 +29,8 @@ jobs:
         run: npm run build
       - name: Show Dist Folder
         run: ls ./backend/dist/
+      - name: Cat Index.js
+        run: cat ./backend/dist/index.js
 
   # test:
   #   name: "Tests"
