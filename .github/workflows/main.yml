@@ -7,29 +7,26 @@ on:
 
 jobs:
 
-  hello:
-    name: "Hello World"
+  environment-variables-print:
+    name: "Build Project"
     runs-on: ubuntu-latest
+    env:
+      NAME: ${{secrets.name}}
+      WORLD: "Earth"
     steps:
       - uses: actions/checkout@v2
-      - name: Show the directory
-        run: ls
-      - name: Show the index.ts
-        run: cat backend/index.ts
-      - name: Move to backend folder
-        run: cd backend
-      - name: Install Node
-        run: npm install
+      - name: Print Hello {{Person(Variable)}}
+        run: echo ${{NAME}}
 
-  test:
-    name: "Tests"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Show the directory
-        run: cd backend
-      - name: Install Node
-        run: npm install
-      - name: Run Tests
-        run: npm run test
+  # test:
+  #   name: "Tests"
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Show the directory
+  #       run: cd backend
+  #     - name: Install Node
+  #       run: npm install
+  #     - name: Run Tests
+  #       run: npm run test
       
