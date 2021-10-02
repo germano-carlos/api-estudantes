@@ -1,5 +1,4 @@
 name: Pipeline Principal
-
 on:
   push:
     branches:
@@ -23,9 +22,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Installing Dependences
-        run: npm install ./backend
+        working-directory: ./backend
+        run: npm install
       - name: Build Project
-        run: npm run build ./backend
+        working-directory: ./backend
+        run: npm run build
 
   # test:
   #   name: "Tests"
