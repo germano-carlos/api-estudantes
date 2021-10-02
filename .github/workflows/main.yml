@@ -27,6 +27,8 @@ jobs:
       - name: Build Project
         working-directory: ./backend
         run: npm run build
+      - name: Show Dist Folder
+        run: ls ./backend/dist/
 
   # test:
   #   name: "Tests"
