@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Move to backend folder
-        run: cd /backend
+        run: cd ./backend
       - name: Show backend Files
         run: ls
 
