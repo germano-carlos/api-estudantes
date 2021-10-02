@@ -16,11 +16,17 @@ jobs:
         run: ls
       - name: Show the index.ts
         run: cat backend/index.ts
+      - name: Move to backend folder
+        run: cd backend
+      - name: Install Node
+        run: npm install
 
   test:
     name: "Tests"
     runs-on: ubuntu-latest
     steps:
+      - name: Move to backend folder
+        run: cd backend
       - name: Run Tests
         run: npm run teste
       
