@@ -32,15 +32,15 @@ jobs:
       - name: Cat Index.js
         run: cat ./backend/dist/index.js
 
-  # test:
-  #   name: "Tests"
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Show the directory
-  #       run: cd backend
-  #     - name: Install Node
-  #       run: npm install
-  #     - name: Run Tests
-  #       run: npm run test
+  test:
+    name: "Run Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing Dependences
+        working-directory: ./backend
+        run: npm install
+      - name: Run Tests
+        working-directory: ./backend
+        run: npm run test
       
