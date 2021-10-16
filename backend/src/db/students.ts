@@ -52,8 +52,10 @@ function addStudent(student: Student) {
  */
 function getStudents(id: any) {
 
+  const teste = getConnection().getRepository(Student).find();
+
   if (id == null)
-    return getConnection().getRepository(Student).find();
+    return Promise.resolve(Object.freeze([...students]));
 
   let index = students.findIndex((element) => element.id == id);
   if (index == -1) return Promise.resolve(false);
@@ -70,11 +72,7 @@ function deleteStudent(id: number) {
 }
 
 function putStudent(id: number, student: Student) {
-  let index = students.findIndex((element) => element.id == id);
-  if (index == -1) return Promise.resolve(false);
-
-  students[index] = { id, ...student };
-  return Promise.resolve(true);
+  
 }
 
 export { addStudent, getStudents, deleteStudent, putStudent };
