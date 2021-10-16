@@ -1,4 +1,5 @@
-import { Student } from "../types/Student";
+import { getConnection } from "typeorm";
+import { Student } from "../entities/Student";
 
 let students: Student[] = [
   {
@@ -50,8 +51,9 @@ function addStudent(student: Student) {
  * @returns Students
  */
 function getStudents(id: any) {
+
   if (id == null)
-    return Promise.resolve(Object.freeze([...students]));
+    return getConnection().getRepository(Student).find();
 
   let index = students.findIndex((element) => element.id == id);
   if (index == -1) return Promise.resolve(false);
