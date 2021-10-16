@@ -50,17 +50,16 @@ function addStudent(student: Student) {
  * Returns student list
  * @returns Students
  */
-function getStudents(id: any) {
-
-  const teste = getConnection().getRepository(Student).find();
+async function getStudents(id: any) {
+  const stud = await getConnection().getRepository(Student).find();
 
   if (id == null)
-    return Promise.resolve(Object.freeze([...students]));
+    return stud
 
-  let index = students.findIndex((element) => element.id == id);
+  let index = stud.findIndex((element) => element.id == id);
   if (index == -1) return Promise.resolve(false);
 
-  return Promise.resolve(Object.freeze(students[index]));;
+  return Promise.resolve(Object.freeze(stud[index]));;
 }
 
 function deleteStudent(id: number) {
@@ -72,7 +71,7 @@ function deleteStudent(id: number) {
 }
 
 function putStudent(id: number, student: Student) {
-  
+
 }
 
 export { addStudent, getStudents, deleteStudent, putStudent };
