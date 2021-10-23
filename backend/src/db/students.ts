@@ -1,4 +1,4 @@
-import { getConnection } from "typeorm";
+import { getConnection, getRepository } from "typeorm";
 import { Student } from "../entities/Student";
 
 let students: Student[] = [
@@ -37,13 +37,9 @@ let students: Student[] = [
  * @param student New student
  * @returns new student
  */
-function addStudent(student: Student) {
-  const newStudent = {
-    id: students.length ? students[students.length - 1].id! + 1 : 1,
-    ...student,
-  };
-  students.push(Object.freeze(newStudent));
-  return Promise.resolve(newStudent);
+async function addStudent(student: Student) {
+  let response = await getConnection().getRepository(Student).save(student);
+  return Promise.resolve(Object.freeze(response));
 }
 
 /**
@@ -59,19 +55,22 @@ async function getStudents(id: any) {
   let index = stud.findIndex((element) => element.id == id);
   if (index == -1) return Promise.resolve(false);
 
-  return Promise.resolve(Object.freeze(stud[index]));;
+  return Promise.resolve(Object.freeze(stud[index]));
 }
 
-function deleteStudent(id: number) {
-  let index = students.findIndex((element) => element.id == id);
-  if (index == -1) return Promise.resolve(false);
-
-  students.splice(index, 1);
-  return Promise.resolve(index != -1);
+async function deleteStudent(id: number) {
+  return Promise.resolve(await getConnection().getRepository(Student).delete(id));
 }
 
-function putStudent(id: number, student: Student) {
-
+async function putStudent(id: number, student: Student) {
+  const property = await getConnection().getRepository(Student).findOne({
+    where: { id }
+  });
+  
+  return await getConnection().getRepository(Student).save({
+    ...property, // existing fields
+    ...student // updated fields
+  });
 }
 
 export { addStudent, getStudents, deleteStudent, putStudent };
